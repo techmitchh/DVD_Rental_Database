@@ -17,6 +17,7 @@ WITH films as (
 		ON i.inventory_id = r.inventory_id
 	 WHERE c.name IN ('Animation', 'Children', 'Classics', 'Comedy', 'Family', 'Music')
 )
+
 SELECT film_name, category,
  COUNT (*) as rental_count
   FROM films
