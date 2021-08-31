@@ -33,8 +33,9 @@ pm AS (
 	ORDER BY 2 DESC
 )
 	 
-SELECT pm.pay_month, t10.fullname, pm.pay_countpermon, pm.pay_amount
+SELECT t10.fullname, SUM(pm.pay_countpermon) AS sum_count, AVG(pm.pay_amount) AS avg_pay
   FROM t10
   JOIN pm
     ON t10.fullname = pm.fullname
-ORDER BY 2,1 DESC;
+GROUP BY 1
+ORDER BY 3 DESC;
