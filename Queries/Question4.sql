@@ -5,7 +5,7 @@ Can you write a query to capture the customer name, month and year of payment, a
 WITH t10 AS (SELECT 	COUNT (*) AS pay_countpermon,
 	  		SUM(amount) AS pay_amount,
 	  		--DATE_TRUNC('month', rental_date) AS pay_month,
-			DATE_PART('year', rental_date) AS pay_year,
+			--DATE_PART('year', rental_date) AS pay_year,
 			CONCAT(first_name,' ',last_name) AS fullname
 	  FROM 	rental AS r
 	  JOIN	customer AS c
@@ -13,7 +13,7 @@ WITH t10 AS (SELECT 	COUNT (*) AS pay_countpermon,
 	  JOIN	payment AS p
 	 USING	(rental_id)
 	 WHERE DATE_PART('year', rental_date) = '2005' 
-	GROUP BY 3,4
+	GROUP BY 3
 	ORDER BY 2 DESC
 	 LIMIT 10
 	 ),
